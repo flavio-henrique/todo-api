@@ -10,11 +10,11 @@ import { TodoModel } from './models/todo.model';
     AuthModule,
     SequelizeModule.forRoot({
       dialect: 'postgres',
-      host: 'localhost',
+      host: 'pgsql',
       port: 5432,
-      username: 'postgres',
-      password: 'password',
-      database: 'todo',
+      username: 'pguser',
+      password: 'pgpassword',
+      database: 'nestjs',
       autoLoadModels: true,
       synchronize: true
     }),
