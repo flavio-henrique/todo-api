@@ -1,10 +1,11 @@
-import { Body, Controller, Delete, Get, Param, Post, UseGuards, Request, Res, HttpStatus, Put } from '@nestjs/common';
-import { AuthService } from 'src/auth/auth.service';
-import { LocalAuthGuard } from 'src/auth/local-auth.guard';
+import { Body, Controller, Post, UseGuards, Request} from '@nestjs/common';
+import { AuthService } from './auth.service';
+import { LocalAuthGuard } from './local-auth.guard';
+
 
 
 @Controller()
-export class UsersController {
+export class AuthController {
   constructor(
     private authService: AuthService) {}
 

@@ -2,15 +2,12 @@ import { Module } from '@nestjs/common';
 import { TodoController } from './todo.controller';
 import { AuthModule } from './auth/auth.module';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { LibraryService } from './services/library.service';
+import { TodoService } from './services/todo.service';
 import { TodoModel } from './models/todo.model';
-import { UserModel } from './users/user.model';
-import { UsersService } from './users/users.service';
-import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-    UsersModule,
+    AuthModule,
     SequelizeModule.forRoot({
       dialect: 'postgres',
       host: 'localhost',
@@ -24,6 +21,6 @@ import { UsersModule } from './users/users.module';
     SequelizeModule.forFeature([TodoModel])
   ],
   controllers: [TodoController],
-  providers: [LibraryService]
+  providers: [TodoService]
 })
 export class AppModule {}

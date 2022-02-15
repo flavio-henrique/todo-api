@@ -4,7 +4,7 @@ import { TodoModel } from "src/models/todo.model";
 import { TodoDto } from "src/todo.dto";
 
 @Injectable()
-export class LibraryService {
+export class TodoService {
     constructor(
         @InjectModel(TodoModel)
         private todoModel: typeof TodoModel
