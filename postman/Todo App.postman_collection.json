@@ -9,6 +9,38 @@
 			"name": "Login",
 			"item": [
 				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"flavisso\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "login",
 					"event": [
 						{
@@ -35,45 +67,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/auth/login",
+							"raw": "localhost:3000/api/auth/login",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
+								"api",
 								"auth",
 								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Register",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"email\": \"flavio\",\n    \"password\": \"123456\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:3000/auth/register",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"auth",
-								"register"
 							]
 						}
 					},
@@ -109,12 +111,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/todos",
+					"raw": "localhost:3000/api/todos",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"todos"
 					]
 				}
@@ -149,14 +152,15 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/todos/1",
+					"raw": "localhost:3000/api/todos/2",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"todos",
-						"1"
+						"2"
 					]
 				}
 			},
@@ -187,12 +191,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/todos/1",
+					"raw": "localhost:3000/api/todos/1",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"todos",
 						"1"
 					]
@@ -225,12 +230,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/todos",
+					"raw": "localhost:3000/api/todos",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"todos"
 					]
 				}
@@ -254,7 +260,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": 2,\n    \"title\": \"sasd\",\n    \"description\": \"asadasd\"\n}",
+					"raw": "{\n    \"id\": 2,\n    \"title\": \"2\",\n    \"description\": \"1\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -262,12 +268,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/todos/2",
+					"raw": "localhost:3000/api/todos/2",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"todos",
 						"2"
 					]
