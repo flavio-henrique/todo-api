@@ -1,20 +1,20 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
-import { TodoModel } from "src/models/todo.model";
-import { TodoDto } from "src/todo.dto";
+import { Todo } from "src/todos/entity/todo.entity";
+import { TodoDto } from "src/todos/dto/todo.dto";
 
 @Injectable()
 export class TodoService {
     constructor(
-        @InjectModel(TodoModel)
-        private todoModel: typeof TodoModel
+        @InjectModel(Todo)
+        private todoModel: typeof Todo
     ) {}
 
-    async findAll(): Promise<TodoModel[]> {
+    async findAll(): Promise<Todo[]> {
         return this.todoModel.findAll();
     }
 
-    findOne(id: string): Promise<TodoModel> {
+    findOne(id: string): Promise<Todo> {
         return this.todoModel.findOne({
             where: {
                 id,
@@ -30,13 +30,13 @@ export class TodoService {
         });
     }
 
-    async create(todo: TodoDto): Promise<TodoModel> {
+    async create(todo: TodoDto): Promise<Todo> {
         return this.todoModel.create({
             title: todo.title,
             description: todo.description});
     }
 
-    async update(todo: TodoDto): Promise<TodoModel> {
+    async update(todo: TodoDto): Promise<Todo> {
         const todoModel = await this.findOne(todo.id);
         if (!todoModel) return todoModel;
         

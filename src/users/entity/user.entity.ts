@@ -1,7 +1,7 @@
 import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 @Table
-export class UserModel extends Model {
+export class User extends Model {
     @Column({
         type: DataType.INTEGER,
         autoIncrement: true,

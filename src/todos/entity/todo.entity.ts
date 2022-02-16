@@ -1,7 +1,7 @@
 import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 @Table
-export class TodoModel extends Model {
+export class Todo extends Model {
     @Column({
         type: DataType.INTEGER,
         autoIncrement: true,

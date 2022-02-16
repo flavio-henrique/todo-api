@@ -1,24 +1,24 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { use } from 'passport';
-import { UserModel } from 'src/users/user.model';
+import { UserDto } from './dto/user.dto';
+import { User } from './entity/user.entity';
 
 @Injectable()
 export class UsersService {
 
     constructor(
-        @InjectModel(UserModel)
-        private userModel: typeof UserModel
+        @InjectModel(User)
+        private user: typeof User
     ) {
 
     }
 
-    async findAll(): Promise<UserModel[]> {
-        return this.userModel.findAll();
+    async findAll(): Promise<User[]> {
+        return this.user.findAll();
     }
 
-    findOne(email: string): Promise<UserModel> {
-        return this.userModel.findOne({
+    findOne(email: string): Promise<User> {
+        return this.user.findOne({
             where: {
                 email,
             },
@@ -26,18 +26,19 @@ export class UsersService {
     }
 
     delete(id: string) {
-        return this.userModel.destroy({
+        return this.user.destroy({
             where: {
                 id,
             },
         });
     }
 
-    async create(email: string, password: string): Promise<UserModel> {
-        return this.userModel.create({ email, password });
+    async create(email: string, password: string): Promise<UserDto> {
+        const userDto = await this.user.create({ email, password });
+        return new UserDto(userDto.get());
     }
 
-    async update(email: string, password: string): Promise<UserModel> {
+    async update(email: string, password: string): Promise<User> {
         const userModel = await this.findOne(email);
         if (!userModel) return userModel;
 

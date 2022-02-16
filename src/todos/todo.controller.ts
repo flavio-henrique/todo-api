@@ -1,9 +1,9 @@
 import { Body, Controller, Delete, Get, Param, Post, UseGuards, Request, Res, HttpStatus, Put } from '@nestjs/common';
-import { TodoDto } from './todo.dto';
-import { JwtAuthGuard } from './auth/jwt-auth.guard';
-import { TodoService } from './services/todo.service';
+import { TodoDto } from './dto/todo.dto';
+import { JwtAuthGuard } from '../users/auth/jwt-auth.guard';
+import { TodoService } from './todo.service';
 
-@Controller()
+@Controller('api')
 export class TodoController {
   constructor(
     private libraryService: TodoService) {}

@@ -1,16 +1,16 @@
 import { Module } from '@nestjs/common';
-import { TodoController } from './todo.controller';
-import { AuthModule } from './auth/auth.module';
+import { TodoController } from './todos/todo.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { TodoService } from './services/todo.service';
-import { TodoModel } from './models/todo.model';
+import { TodoService } from './todos/todo.service';
+import { Todo } from './todos/entity/todo.entity';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-    AuthModule,
+    UsersModule,
     SequelizeModule.forRoot({
       dialect: 'postgres',
-      host: 'pgsql',
+      host: 'localhost',
       port: 5432,
       username: 'pguser',
       password: 'pgpassword',
@@ -18,7 +18,7 @@ import { TodoModel } from './models/todo.model';
       autoLoadModels: true,
       synchronize: true
     }),
-    SequelizeModule.forFeature([TodoModel])
+    SequelizeModule.forFeature([Todo])
   ],
   controllers: [TodoController],
   providers: [TodoService]
