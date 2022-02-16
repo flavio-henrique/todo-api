@@ -3,6 +3,7 @@ import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { UserDto } from 'src/users/dto/user.dto';
 import { AuthService } from './auth/auth.service';
 import { LocalAuthGuard } from './auth/local-auth.guard';
+import { LoginDto } from './dto/login.dto';
 
 
 @ApiTags('auth')
@@ -12,8 +13,9 @@ export class UsersController {
     private authService: AuthService) {}
 
   @UseGuards(LocalAuthGuard)
+  @ApiOkResponse({ type: LoginDto })
   @Post('auth/login')
-  async login(@Request() req) {
+  login(@Request() req) {
     return this.authService.login(req.user);
   }
 

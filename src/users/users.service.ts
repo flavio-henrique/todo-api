@@ -13,10 +13,6 @@ export class UsersService {
 
     }
 
-    async findAll(): Promise<User[]> {
-        return this.user.findAll();
-    }
-
     findOne(email: string): Promise<User> {
         return this.user.findOne({
             where: {
@@ -25,7 +21,7 @@ export class UsersService {
         });
     }
 
-    delete(id: string) {
+    delete(id: string): Promise<number> {
         return this.user.destroy({
             where: {
                 id,
@@ -38,16 +34,4 @@ export class UsersService {
         return new UserDto(userDto.get());
     }
 
-    async update(email: string, password: string): Promise<User> {
-        const userModel = await this.findOne(email);
-        if (!userModel) return userModel;
-
-        userModel.set({
-            id: userModel.id,
-            email: email,
-            password: password
-        });
-        userModel.save();
-        return userModel;
-    }
 }

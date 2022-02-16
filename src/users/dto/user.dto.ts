@@ -4,7 +4,7 @@ import { User } from "../entity/user.entity";
 export class UserDto {
     
     @ApiProperty()
-    id: number;
+    id?: number;
     @ApiProperty()
     email: string;
     @ApiProperty()
