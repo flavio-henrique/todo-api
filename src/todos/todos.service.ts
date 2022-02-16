@@ -61,9 +61,9 @@ export class TodosService {
 
      
         todo.set({
-            id: todo.id,
-            title: todo.title,
-            description: todo.description
+            id: todoDto.id,
+            title: todoDto.title,
+            description: todoDto.description
         });
         todo.save();
         return new TodoDto(todo.get());
