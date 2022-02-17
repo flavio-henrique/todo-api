@@ -32,4 +32,4 @@ jobs:
         context: .
         file: ./api.Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/simplewhale:latest
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/todoapi:latest
