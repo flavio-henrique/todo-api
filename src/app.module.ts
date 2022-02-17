@@ -7,11 +7,11 @@ import { SequelizeModule } from '@nestjs/sequelize';
   imports: [
     SequelizeModule.forRoot({
       dialect: 'postgres',
-      host: 'pgsql',
+      host: process.env.DATABASE_HOST || 'localhost',
       port: 5432,
-      username: 'pguser',
-      password: 'pgpassword',
-      database: 'nestjs',
+      username: process.env.DATABASE_USER || 'pguser',
+      password: process.env.DATABASE_PASS || 'pgpassword',
+      database: process.env.DATABASE_DB || 'nestjs',
       autoLoadModels: true,
       synchronize: true
     }),

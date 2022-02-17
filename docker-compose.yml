@@ -15,12 +15,22 @@ services:
       - NODE_ENV=development
     depends_on:
       - pgsql
+    environment:
+      - DATABASE_HOST=pgsql
+      - DATABASE_USER=pguser
+      - DATABASE_PASS=pgpassword
+      - DATABASE_DB=nestjs
   apiHub:
     image: flaviox5/todoapi
     ports:
       - '3000:3000'
     container_name: apiHub
     restart: always
+    environment:
+      - DATABASE_HOST=pgsql
+      - DATABASE_USER=pguser
+      - DATABASE_PASS=pgpassword
+      - DATABASE_DB=nestjs
     volumes:
       - api-logs:/usr/src/node-api/logs:rw
     environment:
