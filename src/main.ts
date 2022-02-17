@@ -6,7 +6,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
 
-
   const options = new DocumentBuilder()
   .setTitle('Todo')
   .setDescription('Todo API')
@@ -17,8 +16,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
 
-  console.log('host: ', process.env.DATABASE_HOST)
-
   await app.listen(3000);
 }
+console.log('host: ', process.env.DATABASE_HOST)
 bootstrap();
