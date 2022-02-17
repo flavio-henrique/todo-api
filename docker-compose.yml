@@ -15,7 +15,18 @@ services:
       - NODE_ENV=development
     depends_on:
       - pgsql
-
+  apiHub:
+    image: flaviox5/todoapi
+    ports:
+      - '3000:3000'
+    container_name: apiHub
+    restart: always
+    volumes:
+      - api-logs:/usr/src/node-api/logs:rw
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - pgsql
   pgsql:
     image: postgres:alpine
     ports:

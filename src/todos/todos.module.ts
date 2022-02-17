@@ -6,16 +6,6 @@ import { TodosService } from "./todos.service";
 
 @Module({
     imports: [
-      SequelizeModule.forRoot({
-        dialect: 'postgres',
-        host: 'localhost',
-        port: 5432,
-        username: 'pguser',
-        password: 'pgpassword',
-        database: 'nestjs',
-        autoLoadModels: true,
-        synchronize: true
-      }),
       SequelizeModule.forFeature([Todo])
     ],
     controllers: [TodosController],
